@@ -19,7 +19,10 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className="px-3 py-1 border rounded text-sm">
+    <button
+      onClick={toggleTheme}
+      className="px-3 py-1 rounded text-sm bg-primary-color text-white hover:bg-secondary-color transition-colors duration-200"
+    >
       {theme === 'light' ? 'Dark' : 'Light'} Mode
     </button>
   );

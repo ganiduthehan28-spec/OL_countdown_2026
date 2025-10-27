@@ -23,7 +23,10 @@ const LanguageToggle = ({ setLanguage }: LanguageToggleProps) => {
   };
 
   return (
-    <button onClick={toggleLanguage} className="px-3 py-1 border rounded text-sm">
+    <button
+      onClick={toggleLanguage}
+      className="px-3 py-1 rounded text-sm bg-primary-color text-white hover:bg-secondary-color transition-colors duration-200"
+    >
       {currentLanguage === 'en' ? 'Sinhala' : 'English'}
     </button>
   );
