@@ -1,0 +1,15 @@
+{
+  "title": "O/L Countdown 2026",
+  "description": "2026 O/L විභාගය සඳහා αντίστරෝපη μέτρηση",
+  "getDailyReminders": "දිනපතා මතක් කිරීම් ලබා ගන්න",
+  "addToHomeScreen": "මුල් තිරයට එක් කරන්න",
+  "daysRemaining": "තව දින {diffDays}යි! ගණන් කිරීම විවෘත කිරීමට ක්ලික් කරන්න.",
+  "themeToggle": {
+    "dark": "අඳුරු ප්‍රකාරය",
+    "light": "ආලෝක ප්‍රකාරය"
+  },
+  "languageToggle": {
+    "en": "ඉංග්‍රීසි",
+    "si": "සිංහල"
+  }
+}

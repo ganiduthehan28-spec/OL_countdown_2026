@@ -1,34 +1,39 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
-import { tips } from '@/lib/tips';
+import { useState, useEffect } from 'react';
 
-export default function StudyTips() {
-  const [tip, setTip] = useState({ en: '', si: '' });
+const tips = [
+  "Start early and be consistent.",
+  "Understand the syllabus thoroughly.",
+  "Practice past papers regularly.",
+  "Take short breaks to avoid burnout.",
+  "Maintain a healthy diet and sleep schedule.",
+  "Seek help from teachers or peers when stuck.",
+  "Review your notes frequently.",
+  "Stay positive and believe in yourself.",
+];
 
-  const updateTip = useCallback(() => {
-    const randomIndex = Math.floor(Math.random() * tips.length);
-    setTip(tips[randomIndex]);
-  }, []);
+const StudyTips = () => {
+  const [currentTip, setCurrentTip] = useState('');
 
   useEffect(() => {
-    updateTip();
-    const interval = setInterval(updateTip, 20000); // Update every 20 seconds
+    const interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * tips.length);
+      setCurrentTip(tips[randomIndex]);
+    }, 10000); // Change tip every 10 seconds
+
+    // Set initial tip
+    setCurrentTip(tips[Math.floor(Math.random() * tips.length)]);
 
     return () => clearInterval(interval);
-  }, [updateTip]);
+  }, []);
 
   return (
-    <div className="tip-bar w-full max-w-2xl p-4 sm:p-6">
-      <h3 className="text-lg font-semibold mb-2">Study Tip:</h3>
-      <p className="tip-en">{tip.en}</p>
-      {tip.si && <p className="tip-si">{tip.si}</p>}
-      <button
-        onClick={updateTip}
-        className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        New Tip
-      </button>
+    <div className="tip-bar w-full max-w-md mt-8">
+      <h2 className="text-xl font-bold mb-2">Study Tip of the Moment</h2>
+      <p className="tip-en">{currentTip}</p>
     </div>
   );
-}
+};
+
+export default StudyTips;

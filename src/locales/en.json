@@ -1,0 +1,15 @@
+{
+  "title": "O/L Countdown 2026",
+  "description": "Countdown to the 2026 O/L Examination",
+  "getDailyReminders": "Get Daily Reminders",
+  "addToHomeScreen": "Add to Home Screen",
+  "daysRemaining": "Days Remaining! Click to open the countdown.",
+  "themeToggle": {
+    "dark": "Dark Mode",
+    "light": "Light Mode"
+  },
+  "languageToggle": {
+    "en": "English",
+    "si": "Sinhala"
+  }
+}

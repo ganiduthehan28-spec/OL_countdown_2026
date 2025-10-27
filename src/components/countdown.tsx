@@ -1,72 +1,58 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { quotes } from '@/lib/quotes';
+import { useState, useEffect } from 'react';
 
-export default function Countdown() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [quote, setQuote] = useState({ en: '', si: '' });
+interface CountdownProps {
+  targetDate: string;
+}
+
+const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const targetDate = new Date('February 17, 2026 08:30:00');
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
 
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+    return () => clearTimeout(timer);
+  });
 
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const timerComponents: JSX.Element[] = [];
 
-        setTime({ days, hours, minutes, seconds });
-      } else {
-        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval]) {
+      return;
+    }
 
-    const updateQuote = () => {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      setQuote(quotes[randomIndex]);
-    };
-
-    updateCountdown();
-    updateQuote();
-
-    const countdownInterval = setInterval(updateCountdown, 1000);
-    const quoteInterval = setInterval(updateQuote, 10000);
-
-    return () => {
-      clearInterval(countdownInterval);
-      clearInterval(quoteInterval);
-    };
-  }, []);
+    timerComponents.push(
+      <div key={interval} className="time-card">
+        <span className="time-value">{timeLeft[interval]}</span>
+        <span className="time-unit">{interval}</span>
+      </div>
+    );
+  });
 
   return (
-    <div className="text-center">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="time-card">
-          <span className="time-value text-3xl sm:text-4xl md:text-5xl">{time.days}</span>
-          <span className="time-unit">Days</span>
-        </div>
-        <div className="time-card">
-          <span className="time-value text-3xl sm:text-4xl md:text-5xl">{time.hours}</span>
-          <span className="time-unit">Hours</span>
-        </div>
-        <div className="time-card">
-          <span className="time-value text-3xl sm:text-4xl md:text-5xl">{time.minutes}</span>
-          <span className="time-unit">Minutes</span>
-        </div>
-        <div className="time-card">
-          <span className="time-value text-3xl sm:text-4xl md:text-5xl">{time.seconds}</span>
-          <span className="time-unit">Seconds</span>
-        </div>
-      </div>
-      <div className="quote-bar">
-        <p className="quote-en">{quote.en}</p>
-        <p className="quote-si">{quote.si}</p>
-      </div>
+    <div className="flex justify-center items-center space-x-4">
+      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
     </div>
   );
-}
+};
+
+export default Countdown;

@@ -1,32 +1,43 @@
-@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
-  --background: #add8e6;
-  --foreground: #00008b;
+  --background-color: #add8e6;
+  --text-color: #000000;
+  --primary-color: #0070f3;
+  --secondary-color: #0056b3;
+  --card-background: #f0f0f0;
+  --border-color: #cccccc;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-mono: var(--font-geist-mono);
+[data-theme="dark"] {
+  --background-color: #1a202c;
+  --text-color: #ffffff;
+  --primary-color: #90cdf4;
+  --secondary-color: #63b3ed;
+  --card-background: #2d3748;
+  --border-color: #4a5568;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .time-card {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--card-background);
   border-radius: 15px;
   padding: 2rem 1rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-color);
 }
 
 .time-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .time-value {
@@ -34,7 +45,7 @@ body {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: var(--primary-color);
 }
 
 .time-unit {
@@ -42,54 +53,46 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0.8;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .quote-bar {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--card-background);
   border-radius: 15px;
   padding: 2rem;
   margin-top: 2rem;
   text-align: center;
+  color: var(--text-color);
 }
 
-.quote-en {
+.quote-en,
+.quote-si {
   font-size: 1.2rem;
   font-style: italic;
   margin-bottom: 1rem;
-  color: #fff;
-}
-
-.quote-si {
-  font-size: 1rem;
-  color: #fff;
 }
 
 footer {
   margin-top: 2rem;
-  color: #00008b;
+  color: var(--text-color);
 }
 
 .tip-bar {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--card-background);
   border-radius: 15px;
   padding: 1.5rem;
   margin-top: 2rem;
   text-align: center;
   max-width: 90%;
   width: 500px;
+  color: var(--text-color);
 }
 
-.tip-en {
+.tip-en,
+.tip-si {
   font-size: 1.1rem;
   font-style: italic;
   margin-bottom: 1rem;
-  color: #fff;
-}
-
-.tip-si {
-  font-size: 1rem;
-  color: #fff;
 }
 
 @keyframes fadeInScale {
@@ -121,20 +124,16 @@ footer {
     padding: 1.5rem;
     margin-top: 1.5rem;
   }
-  .quote-en {
-    font-size: 1rem;
-  }
+  .quote-en,
   .quote-si {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   .tip-bar {
     padding: 1rem;
     margin-top: 1.5rem;
   }
-  .tip-en {
-    font-size: 1rem;
-  }
+  .tip-en,
   .tip-si {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
