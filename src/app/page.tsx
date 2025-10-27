@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="w-full p-4 pb-8 flex justify-end">
+      <header className="w-full p-4 pb-8 flex justify-center">
         <div className="flex gap-4">
           <ThemeToggle />
           <LanguageToggle setLanguage={(lang: string) => { setLanguage(lang); setT(locales[lang as keyof typeof locales]); }} />
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </header>
       <main className="min-h-screen flex flex-col items-center pt-16 px-4 pb-16">
-        <div className="relative w-[200px] h-[200px] mb-8 rounded-lg overflow-hidden">
+        <div className="relative w-[200px] h-[200px] mb-8 rounded-lg overflow-hidden border-2 border-primary-color">
           <Image
             src="/background.jpg"
             alt="Success Behind 9As"
