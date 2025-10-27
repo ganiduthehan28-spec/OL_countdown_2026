@@ -1,0 +1,10 @@
+name: Daily Push Notifications
+on:
+  schedule:
+    - cron: '*/1 * * * *' # every minute
+jobs:
+  send-notifications:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify Function
+        run: curl -X GET https://ol-countdown-9a.netlify.app/.netlify/functions/sendDailyPush
