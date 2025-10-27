@@ -46,7 +46,4 @@ const PreparationBar = ({ t }: PreparationBarProps) => {
     </div>
   );
 };
-
-export default PreparationBar;
-
 export default PreparationBar;

@@ -39,7 +39,4 @@ const StudyTips = ({ t }: StudyTipsProps) => {
     </div>
   );
 };
-
-export default StudyTips;
-
 export default StudyTips;
