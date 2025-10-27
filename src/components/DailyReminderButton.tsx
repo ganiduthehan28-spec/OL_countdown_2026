@@ -13,7 +13,7 @@ const DailyReminderButton = () => {
 
   const handleSubscribe = async () => {
     if (window.OneSignal) {
-      await window.OneSignal.push(async function(OneSignal) {
+      await window.OneSignal.push(async function(OneSignal: any) {
         await OneSignal.registerForPushNotifications();
         const playerId = await OneSignal.getUserId();
         if (playerId) {
