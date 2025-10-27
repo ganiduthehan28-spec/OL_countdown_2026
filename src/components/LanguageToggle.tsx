@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from 'react';
 
-const LanguageToggle = ({ setLanguage }) => {
+interface LanguageToggleProps {
+  setLanguage: (lang: string) => void;
+}
+
+const LanguageToggle = ({ setLanguage }: LanguageToggleProps) => {
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
   useEffect(() => {

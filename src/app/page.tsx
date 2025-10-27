@@ -31,7 +31,7 @@ export default function Home() {
       <header className="w-full p-4 flex justify-end">
         <div className="flex gap-4">
           <ThemeToggle />
-          <LanguageToggle setLanguage={(lang) => { setLanguage(lang); setT(locales[lang]); }} />
+        <LanguageToggle setLanguage={(lang: string) => { setLanguage(lang); setT(locales[lang as keyof typeof locales]); }} />
         </div>
       </header>
       <main className="min-h-screen flex flex-col items-center pt-16 px-4">
