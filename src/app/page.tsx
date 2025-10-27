@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </header>
       <main className="min-h-screen flex flex-col items-center pt-16 px-4 pb-16">
-        <div className="relative w-[200px] h-[200px] mb-8 rounded-lg overflow-hidden border-2 border-primary-color">
+        <div className="relative w-[200px] h-[200px] mb-8 rounded-lg overflow-hidden">
           <Image
             src="/background.jpg"
             alt="Success Behind 9As"
@@ -46,11 +46,11 @@ export default function Home() {
           />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t.title}</h1>
-        <PreparationBar />
+        <PreparationBar t={t} />
         <Countdown targetDate="2026-02-17T08:30:00" />
-        <StudyTips />
+        <StudyTips t={t} />
       </main>
-      <Footer />
+      <Footer t={t} />
     </>
   );
 }

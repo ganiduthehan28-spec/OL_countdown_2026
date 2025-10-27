@@ -13,7 +13,11 @@ const tips = [
   "Stay positive and believe in yourself.",
 ];
 
-const StudyTips = () => {
+interface StudyTipsProps {
+  t: any; // Adjust this type based on your translation object structure
+}
+
+const StudyTips = ({ t }: StudyTipsProps) => {
   const [currentTip, setCurrentTip] = useState('');
 
   useEffect(() => {
@@ -30,10 +34,12 @@ const StudyTips = () => {
 
   return (
     <div className="tip-bar w-full max-w-md mt-8">
-      <h2 className="text-xl font-bold mb-2">Study Tip of the Moment</h2>
+      <h2 className="text-xl font-bold mb-2">{t.studyTipTitle}</h2>
       <p className="tip-en">{currentTip}</p>
     </div>
   );
 };
+
+export default StudyTips;
 
 export default StudyTips;

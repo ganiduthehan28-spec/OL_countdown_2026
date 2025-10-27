@@ -11,5 +11,13 @@
   "languageToggle": {
     "en": "English",
     "si": "Sinhala"
-  }
+  },
+  "preparationProgress": "Preparation Progress",
+  "preparationStarts": "Starts",
+  "preparationEnds": "Ends",
+  "preparationTimePassed": "of your preparation time has passed",
+  "studyTipTitle": "Study Tip of the Moment",
+  "footerPreparedBy": "Prepared by: Ganidu Thehan",
+  "footerContact": "Contact me: 0742674380",
+  "footerCopyright": "&copy;2026."Success behind 9As" WhatsApp Channel"
 }
