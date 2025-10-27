@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-interface PreparationBarProps {
-  t: any; // Adjust this type based on your translation object structure
-}
-
-const PreparationBar = ({ t }: PreparationBarProps) => {
+const PreparationBar = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -29,7 +25,7 @@ const PreparationBar = ({ t }: PreparationBarProps) => {
 
   return (
     <div className="w-full max-w-md mt-8">
-      <h2 className="text-xl font-bold mb-2">{t.preparationProgress}</h2>
+      <h2 className="text-xl font-bold mb-2">Preparation Progress</h2>
       <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
         <div
           className="bg-blue-600 h-4 rounded-full"
@@ -37,11 +33,11 @@ const PreparationBar = ({ t }: PreparationBarProps) => {
         ></div>
       </div>
       <p className="text-sm mt-2 text-gray-600 dark:text-gray-300">
-        <span>{t.preparationStarts}: Jan 1, 2024</span>
-        <span className="float-right">{t.preparationEnds}: Feb 17, 2026</span>
+        <span>Starts: Jan 1, 2024</span>
+        <span className="float-right">Ends: Feb 17, 2026</span>
       </p>
       <p className="text-sm mt-2 text-gray-600 dark:text-gray-300">
-        {percentagePassed}% {t.preparationTimePassed}
+        {percentagePassed}% of your preparation time has passed
       </p>
     </div>
   );
