@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') || 'en';
     setLanguage(savedLanguage);
-    setT(locales[savedLanguage]);
+    setT(locales[savedLanguage as keyof typeof locales]);
   }, []);
 
   return (
