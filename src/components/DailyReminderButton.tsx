@@ -26,7 +26,7 @@ const DailyReminderButton = () => {
 
   const handleSaveTime = async () => {
     if (window.OneSignal) {
-      await window.OneSignal.push(async function(OneSignal) {
+      await window.OneSignal.push(async function(OneSignal: any) {
         await OneSignal.sendTag('reminderTime', time);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
