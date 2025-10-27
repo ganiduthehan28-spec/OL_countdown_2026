@@ -36,8 +36,21 @@ export default function Home() {
           <AddToHomeScreen />
         </div>
       </header>
-        <Footer />
+      <main className="min-h-screen flex flex-col items-center pt-16 px-4">
+        <div className="relative w-[200px] h-[200px] mb-8 rounded-lg overflow-hidden">
+          <Image
+            src="/background.jpg"
+            alt="Success Behind 9As"
+            fill
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t.title}</h1>
+        <PreparationBar />
+        <Countdown targetDate="2026-02-17T08:30:00" />
+        <StudyTips />
       </main>
+      <Footer />
     </>
   );
 }
